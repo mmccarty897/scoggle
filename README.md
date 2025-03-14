@@ -19,3 +19,5 @@ sbt test
 ```
 
 Some basic property-based tests via [Scalacheck](https://scalacheck.org/) are done to verify the Trie implementation, which powers the scoggle algorithm.
+
+The dictionary for words comes from `/usr/share/dict/american-english` from the `wamerican` package on Ubuntu 22.04.
