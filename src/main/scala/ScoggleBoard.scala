@@ -26,6 +26,10 @@ object ScoggleBoard:
     Array("H", "L", "N", "N", "R", "Z")
   )
 
+  def fromArray(grid: Array[Array[String]]): Either[String, ScoggleBoard] =
+    if grid.length == SIZE && grid.forall(_.length == SIZE) then Right(ScoggleBoard(grid))
+    else Left("Invalid scoggle grid supplied")
+
   def getRandom(): ScoggleBoard =
     val randomizedDiceGrid =
       Random
