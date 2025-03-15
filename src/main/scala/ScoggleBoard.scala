@@ -2,9 +2,11 @@ import scala.util.Random
 
 case class ScoggleBoard private (grid: Array[Array[String]]):
   override def toString(): String =
-    grid.map(_.mkString(" ")).mkString("\n")
+    grid.map(_.mkString("\t")).mkString("\n")
 
 object ScoggleBoard:
+  val SIZE = 4
+
   private val boardDie = Array(
     Array("A", "A", "E", "E", "G", "N"),
     Array("A", "B", "B", "J", "O", "O"),
@@ -30,6 +32,6 @@ object ScoggleBoard:
         .shuffle(boardDie)
         .toArray
         .map(_.apply(Random.nextInt(6)))
-        .grouped(4)
+        .grouped(SIZE)
         .toArray
     ScoggleBoard(randomizedDiceGrid)
