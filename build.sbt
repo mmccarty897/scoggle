@@ -6,6 +6,5 @@ lazy val root = project
     name := "scoggle",
     version := "0.1.0-SNAPSHOT",
     scalaVersion := scala3Version,
-    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
     libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.15.4" % "test"
   )

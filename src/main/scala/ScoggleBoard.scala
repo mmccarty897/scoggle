@@ -1,5 +1,10 @@
 import scala.util.Random
 
+/** A case class representing a scoggle board
+  *
+  * @param grid
+  *   2D array of strings representing the scoggle board
+  */
 case class ScoggleBoard private (grid: Array[Array[String]]):
   override def toString(): String =
     grid.map(_.mkString("\t")).mkString("\n")
@@ -26,10 +31,22 @@ object ScoggleBoard:
     Array("H", "L", "N", "N", "R", "Z")
   )
 
+  /** Create a scoggle board from a 2D array of strings
+    *
+    * @param grid
+    *   The 2D array of strings representing the scoggle board
+    * @return
+    *   Either an error message or a valid scoggle board
+    */
   def fromArray(grid: Array[Array[String]]): Either[String, ScoggleBoard] =
     if grid.length == SIZE && grid.forall(_.length == SIZE) then Right(ScoggleBoard(grid))
     else Left("Invalid scoggle grid supplied")
 
+  /** Generate a random scoggle board
+    *
+    * @return
+    *   A randomized scoggle board
+    */
   def getRandom(): ScoggleBoard =
     val randomizedDiceGrid =
       Random

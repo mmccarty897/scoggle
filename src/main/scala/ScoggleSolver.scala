@@ -1,5 +1,3 @@
-import scala.collection.parallel.CollectionConverters._
-
 /** A class to find all of the words in a scoggle board
   *
   * @param scoggleBoard
@@ -83,7 +81,7 @@ class ScoggleSolver(val scoggleBoard: ScoggleBoard):
       y <- 0 until ScoggleBoard.SIZE
     yield (x, y)
 
-    val results = startingPoints.toArray.par.map: (x, y) =>
+    val results = startingPoints.toArray.map: (x, y) =>
       solve(x, y)
 
     results.reduce(_ ++ _)
