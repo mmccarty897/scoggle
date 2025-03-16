@@ -1,11 +1,12 @@
 /** A simple dictionary that contains a set of words.
   */
 object WordDictionary:
-  val words: Set[String] =
+  val words: Trie =
     val source = io.Source.fromResource("words.txt")
-    val words = source.getLines().filter(_.forall(_.isLetter)).map(_.toUpperCase).toSet
+    val wordsIterator = source.getLines().filter(_.forall(_.isLetter)).map(_.toUpperCase)
+    val wordsTrie = wordsIterator.foldLeft(Trie())((trie: Trie, word: String) => trie.insert(word))
     source.close()
-    words
+    wordsTrie
 
   /** Check if a word is in the dictionary
     *

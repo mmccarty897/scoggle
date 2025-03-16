@@ -4,9 +4,6 @@
   *   The scoggle board to find words in
   */
 class ScoggleSolver(val scoggleBoard: ScoggleBoard):
-  private val validWordTrie =
-    WordDictionary.words.foldLeft(Trie())((trie: Trie, word: String) => trie.insert(word))
-
   /** Get the neighbors of a given position on the board
     *
     * @param board
@@ -68,7 +65,7 @@ class ScoggleSolver(val scoggleBoard: ScoggleBoard):
 
         resultSet ++ neighborWords.flatten
 
-    dfs(x, y, "", validWordTrie)
+    dfs(x, y, "", WordDictionary.words)
 
   /** Finds all words on the board for the given scoggle solver.
     *
